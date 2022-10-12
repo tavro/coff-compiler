@@ -1,14 +1,14 @@
-int lexical_analyzer() {
+int lexical_analyzer(FILE* f) {
         int t;
 
         while(1) {
-                t = getchar();
-                if (t == ' ' || t == '\t');             /* strip white space */
+                t = getc(f);//getchar();
+		if (t == ' ' || t == '\t');             /* strip white space */
                 else if (t == '\n')
                         line_number = line_number + 1;  /* new line */
                 else if (isdigit(t)) {                  /* is digit */
-                        ungetc(t, stdin);
-                        scanf("%d", &token_value);
+                        ungetc(t, f);//stdin);
+                        fscanf(f, "%d", &token_value);
                         return NUM;
                 }
                 else if (isalpha(t)) {                  /* is letter */
@@ -16,7 +16,7 @@ int lexical_analyzer() {
 
                         while(isalnum(t)) {             /* is alphanumeric */
                                 lex_buffer[buffer_index] = t;
-                                t = getchar();
+                                t = getc(f);//getchar();
                                 buffer_index = buffer_index + 1;
 
                                 if (buffer_index >= BUFFER_SIZE)
@@ -25,7 +25,7 @@ int lexical_analyzer() {
 
                         lex_buffer[buffer_index] = EOS;
                         if (t != EOF)
-                                ungetc(t, stdin);
+                                ungetc(t, f);//stdin);
 
                         p = lookup(lex_buffer);
                         if (p == 0)

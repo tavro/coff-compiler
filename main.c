@@ -15,8 +15,15 @@
 #include "init.h"
 #include "parser.h"
 
-int main() {
+int main(int argc, char **argv) {
+	FILE *f = fopen(argv[1], "r");
+
+	if(f == NULL) {
+     		perror("Error in opening file");
+      		return(-1);
+   	}
+
 	init();
-	parse();
+	parse(f);
 	return 0;
 }
