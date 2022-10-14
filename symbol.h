@@ -12,11 +12,15 @@ int insert(char s[], int tok) {
         int len;
         len = strlen(s);
 
-        if (last_entry + 1 >= SYM_MAX)
-                error("compiler error: symbol table is full");
+        if (last_entry + 1 >= SYM_MAX) {
+		char error_msg[] = "compiler error: symbol table is full";
+                error(error_msg);
+	}
 
-        if (last_char + len + 1 >= STR_MAX)
-                error("compiler error: lexemes array is full");
+        if (last_char + len + 1 >= STR_MAX) {
+                char error_msg[] = "compiler error: lexemes array is full";
+		error(error_msg);
+	}
 
         last_entry = last_entry + 1;
         symbol_table[last_entry].token = tok;

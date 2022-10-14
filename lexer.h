@@ -19,8 +19,10 @@ int lexical_analyzer(FILE* f) {
                                 t = getc(f);//getchar();
                                 buffer_index = buffer_index + 1;
 
-                                if (buffer_index >= BUFFER_SIZE)
-                                        error("compiler error: buffer index out of range");
+                                if (buffer_index >= BUFFER_SIZE) {
+					char error_msg[] = "compiler error: buffer index out of range";
+                                        error(error_msg);
+				}
                         }
 
                         lex_buffer[buffer_index] = EOS;

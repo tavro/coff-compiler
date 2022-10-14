@@ -8,6 +8,9 @@
 #define ID          259
 #define DONE        260
 
+#define DEF	    266
+#define END         267
+
 #define STR_MAX 999     /* size of lexeme array */
 #define SYM_MAX 100     /* size of symbol table */
 

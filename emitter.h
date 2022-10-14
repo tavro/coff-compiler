@@ -8,25 +8,26 @@ void emit(int t, int t_value)
 
         switch(t) {
                 case '+': case '-': case '*': case '/':
-			printf("%c\n", t);
 			putc(t, fptr);
                         break;
                 case DIV:
-                        printf("DIV\n");
 			fputs("DIV", fptr);
                         break;
                 case MOD:
-                        printf("MOD\n");
 			fputs("MOD", fptr);
                         break;
                 case NUM:
-                        printf("%d\n", t_value);
 			char str[99];
 			sprintf(str, "%d", t_value);
 			fputs(str, fptr);
                         break;
+		case DEF:
+			//fputs("int main(int argc, char ** argv) {", fptr);
+			break;
+		case END:
+			//fputs("}", fptr);
+			break;
                 case ID:
-                        printf("%s\n", symbol_table[t_value].lexptr);
 			fputs(symbol_table[t_value].lexptr, fptr);
                         break;
                 default:

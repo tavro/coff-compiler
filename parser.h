@@ -2,7 +2,10 @@ void match(int t, FILE* f)
 {
         if (lookahead == t)
                 lookahead = lexical_analyzer(f);
-        else error("compiler error: syntax error");
+        else {
+		char error_msg[] = "compiler error: syntax error";
+		error(error_msg);
+	}
 }
 
 void expression(FILE* f);
@@ -22,7 +25,8 @@ void factor(FILE* f) {
                         match(ID, f);
                         break;
                 default:
-                        error("compiler error: syntax error");
+			char error_msg[] = "compiler error: syntax error";
+                        error(error_msg);
         }
 }
 

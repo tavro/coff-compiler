@@ -1,6 +1,8 @@
 struct entry keywords[] = {
         "div", DIV,
         "mod", MOD,
+        "def", DEF,
+	"end", END,
         0,     0
 };
 
